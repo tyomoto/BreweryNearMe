@@ -27,43 +27,64 @@
         <div class="columns">
             <div class="column is-one-quarter is-info notification search-field-container">
                 <div class="field">
-                    <label class="label">Search for Local Brewery</label>
+                    <label class="label search-field-title">Search for Local Brewery</label>
                     <div class="control">
-                        <input class="input" type="text" placeholder="Search for location here!">
-                        <button class="button is-white">Submit</button>
+                        <input class="input search-field-input" id="search-field-input" type="text" placeholder="Search for location here!">
+                        <button class="button is-white searchBtn" id="searchBtn">Submit</button>
                     </div>
                 </div>
             </div>
             <div class="column box results-container">
-                <p class="title has-text-left">Results:</p>
-                <p class="subtitle has-text-left">placeholder for our results</p>
+                <p class="title has-text-left results-title" id="results-title">Results:</p>
+                <p class="subtitle has-text-left results-info" id="results-info">Results are sorted by nearest brewery to your location</p>
                 <div class="content">
-                    <div class="container notification is-light">
-                        <div class="notification is-light">
-                          container 1
+                    <div class="container notification is-light results-container" id="results-container">
+                        <div class="notification is-dark results-container-1" id="results-container-1">
+                            <div>
+                                <p class="brewery-name-1" id="brewery-name-1"></p>
+                                <p class="brewery-address-1" id="brewery-address-1"></p>
+                                <p class="brewery-website-name-1" id="brewery-website-name-1">
+                                    <a class="brewery-websiteurl-1" id="brewery-websiteurl-1" href=""></a>
+                                </p>
+                                <p class="brewery-distance-1" id="brewery-distance-1"></p>
+                            </div>
+                            <!--  brewery name, street/address, websiteurl, distance -->
+                            <!-- MVP would include image of website as anchor link -->
+                          
+                        </div>
+                        <div class="notification is-dark results-container-2" id="results-container-2">
+                            <p class="brewery-name-2" id="brewery-name-2"></p>
+                            <p class="brewery-address-2" id="brewery-address-2"></p>
+                            <p class="brewery-website-name-2" id="brewery-website-name-2">
+                                <a class="brewery-websiteurl-2" id="brewery-websiteurl-2" href=""></a>
+                            </p>
+                            <p class="brewery-distance-2" id="brewery-distance-2"></p>
+                        </div>
+                        <div class="notification is-dark results-container-3" id="results-container-3">
+                            <p class="brewery-name-3" id="brewery-name-3"></p>
+                            <p class="brewery-address-3" id="brewery-address-3"></p>
+                            <p class="brewery-website-name-3" id="brewery-website-name-3">
+                                <a class="brewery-websiteurl-3" id="brewery-websiteurl-3" href=""></a>
+                            </p>
+                            <p class="brewery-distance-3" id="brewery-distance-3"></p>
+                        </div>
+                        <div class="notification is-dark results-container-4" id="results-container-4">
+                            <p class="brewery-name-4" id="brewery-name-4"></p>
+                            <p class="brewery-address-4" id="brewery-address-4"></p>
+                            <p class="brewery-website-name-4" id="brewery-website-name-4">
+                                <a class="brewery-websiteurl-4" id="brewery-websiteurl-4" href=""></a>
+                            </p>
+                            <p class="brewery-distance-4" id="brewery-distance-4"></p>
+                        </div>
+                        <div class="notification is-dark results-container-5" id="results-container-5">
+                            <p class="brewery-name-5" id="brewery-name-5"></p>
+                            <p class="brewery-address-5" id="brewery-address-5"></p>
+                            <p class="brewery-website-name-5" id="brewery-website-name-5">
+                                <a class="brewery-websiteurl-5" id="brewery-websiteurl-5" href=""></a>
+                            </p>
+                            <p class="brewery-distance-5" id="brewery-distance-5"></p>
                         </div>
                     </div>
-                    <div class="container notification is-light">
-                        <div class="notification is-light">
-                          container 2
-                        </div>
-                    </div>
-                    <div class="container notification is-light">
-                        <div class="notification is-light">
-                          container 3
-                        </div>
-                    </div>
-                    <div class="container notification is-light">
-                        <div class="notification is-light">
-                          container 3
-                        </div>
-                    </div>
-                    <div class="container notification is-light">
-                        <div class="notification is-light">
-                          container 3
-                        </div>
-                    </div>
-                   
                     
                 </div>
             </div>
