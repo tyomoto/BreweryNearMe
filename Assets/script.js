@@ -4,6 +4,7 @@ var apiKey = "95hcXeOsnd4dIFUnbepjXbFxyLKnwAAA";
 // Global variables
 var cityLat;
 var cityLong;
+
 // fetch function for city location based on search input
 
 var userLocation = function(cityName){
@@ -33,7 +34,6 @@ var userLocation = function(cityName){
 
 // load user local storage under search input
 
-// listen event for click of search button
+
 
 userLocation();
-// listen event for click of past search history 
