@@ -27,7 +27,7 @@ var userLocation = function(cityName){
         
         console.log(cityLat);
         console.log(cityLong);
-        console.log(data);
+        // console.log(data);
     })
 }
     // fetch lon/lat based on address using mapquest
@@ -71,8 +71,8 @@ $("#searchform").on("submit", function(){
     event.preventDefault();
     var cityName = $('#search-input').val();
        // ADD in all funcions that need to run
-       userLocation();
-       breweryData();  
+       userLocation(cityName);
+       breweryData(cityName);  
    
 })
 
