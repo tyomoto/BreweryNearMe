@@ -15,6 +15,7 @@ var searchesStored = [];
 var breweryAddressMatrix = [];
 var breweryAddressLongMatrix = [];
 var breweryAddressLatMatrix =[];
+var breweryWebsiteMatrix =[];
  
 // fetch function for city location based on search input
     // fetch lon/lat based on address using mapquest
@@ -43,8 +44,8 @@ var userLocation = function(cityName){
     // street/address, (use openbreweryapi)
 var breweryData = function(){
 
-    console.log(cityLong);
-    console.log(cityLat);
+    // console.log(cityLong);
+    // console.log(cityLat);
 
     fetch("https://api.openbrewerydb.org/breweries?by_dist=" + cityLat + "," + cityLong + "&per_page=5")
     .then(function(response){
@@ -54,12 +55,15 @@ var breweryData = function(){
         // console.log(data);
         for(var i=0; i < 5; i++){
             breweryAddressMatrix[i] = data[i].street;
+            breweryWebsiteMatrix[i] = data[i].website_url;
             breweryAddressLongMatrix[i] = data[i].longitude; 
             breweryAddressLatMatrix[i] = data[i].latitude;
         }
-        console.log(breweryAddressLatMatrix);
-        console.log(breweryAddressLongMatrix);
-        console.log(breweryAddressMatrix);
+        console.log(data);
+        console.log(breweryWebsiteMatrix);
+        // console.log(breweryAddressLatMatrix);
+        // console.log(breweryAddressLongMatrix);
+        // console.log(breweryAddressMatrix);
         getDistance();
         
     })
