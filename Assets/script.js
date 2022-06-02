@@ -5,6 +5,13 @@ var apiKey = "95hcXeOsnd4dIFUnbepjXbFxyLKnwAAA";
 var cityLat;
 var cityLong;
 
+
+var breweryAddressMatrix = [];
+var breweryAddressLongMatrix = [];
+var breweryAddressLatMatrix =[];
+
+
+  
 // fetch function for city location based on search input
 
 var userLocation = function(cityName){
@@ -23,9 +30,29 @@ var userLocation = function(cityName){
     })
 }
     // fetch lon/lat based on address using mapquest
+
     // fetch breweries by distance // GET https://api.openbrewerydb.org/breweries?by_dist=LON/LAT5&per_page=5
         //  brewery name, (use openbreweryapi)
+
+var breweryData = function(){
+    fetch("https://api.openbrewerydb.org/breweries?by_dist=" + cityLong + "," + cityLat + "&per_page=5")
+    .then(function(response){
+        return response.json();
+    })
+    .then(function(data){
+        console.log(data);
+        for(var i=0; i < 5; i++){
+            breweryAddressMatrix[i] = data[i].street;
+            breweryAddressLongMatrix[i] = data[i].longitude; 
+            breweryAddressLatMatrix[i] = data[i].latitude;
+        }
+        console.log(breweryAddressMatrix);
+        console.log(breweryAddressLongMatrix);
+        console.log(breweryAddressLatMatrix);
+    })
+}
         // street/address, (use openbreweryapi)
+
          // distance, (use mapquestapi based on openbrewery long/lat)
         //  websiteurl, (use openbreweryapi)
        
@@ -33,6 +60,14 @@ var userLocation = function(cityName){
 // Save user search history into local storage
 
 // load user local storage under search input
+
+
+// listen event for click of search button
+
+userLocation();
+breweryData();
+// listen event for click of past search history 
+
 
 
 
