@@ -1,9 +1,10 @@
 // Api Keys for Mapquest
-var ApiKay = "95hcXeOsnd4dIFUnbepjXbFxyLKnwAAA";
+var apiKey = "95hcXeOsnd4dIFUnbepjXbFxyLKnwAAA";
 
 // Global variables
 var cityLat;
 var cityLong;
+
 // fetch function for city location based on search input
 
 var userLocation = function(cityName){
@@ -29,14 +30,10 @@ var userLocation = function(cityName){
         //  websiteurl, (use openbreweryapi)
        
 
-
 // Save user search history into local storage
 
 // load user local storage under search input
 
-// listen event for click of search button
+
 
 userLocation();
-// listen event for click of past search history 
-
-
