@@ -5,6 +5,7 @@ var apiKey = "95hcXeOsnd4dIFUnbepjXbFxyLKnwAAA";
 var cityLat;
 var cityLong;
 
+var searchesStored = []
 
 var breweryAddressMatrix = [];
 var breweryAddressLongMatrix = [];
@@ -62,13 +63,27 @@ var breweryData = function(){
 // load user local storage under search input
 
 
+
+userLocation();
+
 // listen event for click of search button
+$("#searchform").on("submit", function(){
+    event.preventDefault();
+    var cityName = $('#search-input').val();
+       // ADD in all funcions that need to run
+       userLocation();
+       breweryData();  
+   
+})
 
-userLocation();
-breweryData();
 // listen event for click of past search history 
+$("#search-history-container").on("click", "p", function(){
+    var historyCityName = $(this).text();
+    userLocation(cityName);
+    // Run Fetch commands
+    breweryData(cityName);
+    
+})
 
 
 
-
-userLocation();
