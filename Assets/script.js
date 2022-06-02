@@ -1,10 +1,16 @@
 // Api Keys for Mapquest
 var apiKey = "95hcXeOsnd4dIFUnbepjXbFxyLKnwAAA";
-var cityInput = 'Miami';
+
 
 // Global variables
-var cityLat = 0;
-var cityLong = 0;
+
+
+
+var cityLat;
+var cityLong;
+
+var searchesStored = [];
+
 
 var breweryAddressMatrix = [];
 var breweryAddressLongMatrix = [];
@@ -22,8 +28,13 @@ var userLocation = function(cityName){
         cityLong = data.results[0].locations[0].latLng.lng;
         console.log(cityLat);
         console.log(cityLong);
+
         // console.log(data);
         breweryData();
+
+        console.log(data);
+        breweryData(); 
+
     })
 }
 
@@ -31,6 +42,10 @@ var userLocation = function(cityName){
     //  brewery name, (use openbreweryapi)
     // street/address, (use openbreweryapi)
 var breweryData = function(){
+
+    console.log(cityLong);
+    console.log(cityLat);
+
     fetch("https://api.openbrewerydb.org/breweries?by_dist=" + cityLat + "," + cityLong + "&per_page=5")
     .then(function(response){
         return response.json();
@@ -73,9 +88,34 @@ var getDistance = function(){
 // load user local storage under search input
 
 
-// listen event for click of search button
 
-userLocation(cityInput);
+
+// listen event for click of search button
+$("#searchform").on("submit", function(){
+    event.preventDefault();
+    var cityName = $('#search-field-input').val();
+       // ADD in all funcions that need to run
+       console.log(cityName);
+       userLocation(cityName);
+        
+   
+})
+
+
+
 
 // distance();
 // listen event for click of past search history 
+
+// listen event for click of past search history 
+$("#search-history-container").on("click", "p", function(){
+    var historyCityName = $(this).text();
+    userLocation(cityName);
+    // Run Fetch commands
+    breweryData(cityName);
+    
+})
+
+
+
+
