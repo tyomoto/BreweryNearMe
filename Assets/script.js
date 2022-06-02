@@ -5,7 +5,7 @@ var apiKey = "95hcXeOsnd4dIFUnbepjXbFxyLKnwAAA";
 var cityLat;
 var cityLong;
 
-var searchesStored = []
+var searchesStored = [];
 
 var breweryAddressMatrix = [];
 var breweryAddressLongMatrix = [];
@@ -28,6 +28,7 @@ var userLocation = function(cityName){
         console.log(cityLat);
         console.log(cityLong);
         console.log(data);
+        breweryData(); 
     })
 }
     // fetch lon/lat based on address using mapquest
@@ -36,7 +37,9 @@ var userLocation = function(cityName){
         //  brewery name, (use openbreweryapi)
 
 var breweryData = function(){
-    fetch("https://api.openbrewerydb.org/breweries?by_dist=" + cityLong + "," + cityLat + "&per_page=5")
+    console.log(cityLong);
+    console.log(cityLat);
+    fetch("https://api.openbrewerydb.org/breweries?by_dist=" + cityLat + "," + cityLong + "&per_page=5")
     .then(function(response){
         return response.json();
     })
@@ -64,15 +67,15 @@ var breweryData = function(){
 
 
 
-userLocation();
 
 // listen event for click of search button
 $("#searchform").on("submit", function(){
     event.preventDefault();
-    var cityName = $('#search-input').val();
+    var cityName = $('#search-field-input').val();
        // ADD in all funcions that need to run
-       userLocation();
-       breweryData();  
+       console.log(cityName);
+       userLocation(cityName);
+        
    
 })
 
