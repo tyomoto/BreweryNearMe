@@ -4,9 +4,14 @@ var apiKey = "95hcXeOsnd4dIFUnbepjXbFxyLKnwAAA";
 // Global variables
 var cityLat;
 var cityLong;
+
+
 var breweryAddressMatrix = [];
 var breweryAddressLongMatrix = [];
 var breweryAddressLatMatrix =[];
+
+
+  
 // fetch function for city location based on search input
 
 var userLocation = function(cityName){
@@ -52,10 +57,10 @@ var breweryData = function(){
         //  websiteurl, (use openbreweryapi)
        
 
-
 // Save user search history into local storage
 
 // load user local storage under search input
+
 
 // listen event for click of search button
 
@@ -64,3 +69,6 @@ breweryData();
 // listen event for click of past search history 
 
 
+
+
+userLocation();
