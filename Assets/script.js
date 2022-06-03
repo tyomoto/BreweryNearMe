@@ -64,6 +64,11 @@ var breweryData = function(){
 
             var breweryAddress = $("#brewery-address-" + [i+1]);
             breweryAddress.text("Brewery Address: " + breweryAddressMatrix[i])
+
+            var websiteURL = $("#brewery-websiteurl-" + [i+1]);
+            websiteURL.text(breweryWebsiteMatrix[i])
+            websiteURL.attr("href", breweryWebsiteMatrix[i]);
+
         }
         console.log(data);
         console.log(breweryWebsiteMatrix);
