@@ -16,6 +16,7 @@ var breweryAddressMatrix = [];
 var breweryAddressLongMatrix = [];
 var breweryAddressLatMatrix =[];
 var breweryWebsiteMatrix =[];
+var distanceMatrix =[];
  
 // fetch function for city location based on search input
     // fetch lon/lat based on address using mapquest
@@ -51,7 +52,7 @@ var breweryData = function(){
         return response.json();
     })
     .then(function(data){
-        // console.log(data);
+        console.log(data);
         for(var i=0; i < data.length; i++){
             breweryNameMatrix[i] = data[i].name;
             breweryAddressMatrix[i] = data[i].street;
@@ -83,15 +84,65 @@ var breweryData = function(){
     // distance, (use mapquestapi based on openbrewery long/lat)
 var getDistance = function(){
     console.log(breweryAddressLatMatrix);
-    for(var i=0; i < 5; i++){
-    fetch(`http://www.mapquestapi.com/directions/v2/route?key=${apiKey}&from=${cityLat},${cityLong}&to=${breweryAddressLatMatrix[i]},${breweryAddressLongMatrix[i]}`)
+
+    fetch(`http://www.mapquestapi.com/directions/v2/route?key=${apiKey}&from=${cityLat},${cityLong}&to=${breweryAddressLatMatrix[0]},${breweryAddressLongMatrix[0]}`)
+        .then(function(response){
+        return response.json();
+        })
+        .then(function(data){
+            console.log(data);
+            distanceMatrix[0] = data.route.distance;
+            var breweryDistance = $("#brewery-distance-" + [1]);
+            breweryDistance.text("Brewery Distance: " + distanceMatrix[0] + " Miles");
+        })
+
+    fetch(`http://www.mapquestapi.com/directions/v2/route?key=${apiKey}&from=${cityLat},${cityLong}&to=${breweryAddressLatMatrix[1]},${breweryAddressLongMatrix[1]}`)
+        .then(function(response){
+        return response.json();
+        })
+        .then(function(data){
+            console.log(data);
+            distanceMatrix[1] = data.route.distance;
+            var breweryDistance = $("#brewery-distance-" + [2]);
+            breweryDistance.text("Brewery Distance: " + distanceMatrix[1] + " Miles");
+        })
+
+    fetch(`http://www.mapquestapi.com/directions/v2/route?key=${apiKey}&from=${cityLat},${cityLong}&to=${breweryAddressLatMatrix[2]},${breweryAddressLongMatrix[2]}`)
     .then(function(response){
     return response.json();
     })
     .then(function(data){
         console.log(data);
+        distanceMatrix[2] = data.route.distance;
+        var breweryDistance = $("#brewery-distance-" + [3]);
+        breweryDistance.text("Brewery Distance: " + distanceMatrix[2] + " Miles");
     })
-    }
+
+    fetch(`http://www.mapquestapi.com/directions/v2/route?key=${apiKey}&from=${cityLat},${cityLong}&to=${breweryAddressLatMatrix[3]},${breweryAddressLongMatrix[3]}`)
+    .then(function(response){
+    return response.json();
+    })
+    .then(function(data){
+        console.log(data);
+        distanceMatrix[3] = data.route.distance;
+        var breweryDistance = $("#brewery-distance-" + [4]);
+        breweryDistance.text("Brewery Distance: " + distanceMatrix[3]+ " Miles");
+    })
+
+    fetch(`http://www.mapquestapi.com/directions/v2/route?key=${apiKey}&from=${cityLat},${cityLong}&to=${breweryAddressLatMatrix[4]},${breweryAddressLongMatrix[4]}`)
+    .then(function(response){
+    return response.json();
+    })
+    .then(function(data){
+        console.log(data);
+        distanceMatrix[4] = data.route.distance;
+        var breweryDistance = $("#brewery-distance-" + [5]);
+        breweryDistance.text("Brewery Distance: " + distanceMatrix[4]+ " Miles");
+        console.log(distanceMatrix);
+    })
+
+    
+    
 }
 
     //  websiteurl, (use openbreweryapi)
@@ -156,7 +207,7 @@ $("#search-history-container").on("click", ".history-button", function(){
     var cityName = $(this).text();
     userLocation(cityName);
     // Run Fetch commands
-    breweryData(cityName);
+    // breweryData(cityName);
     
 })
 
