@@ -96,31 +96,61 @@ var getDistance = function(){
 
 // Save user search history into local storage
 
+var searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
+if (searchHistory == null) {
+    searchHistory = [];
+    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+}
+function storeHistory (name) {
+    if (name == "") {
+        return;
+    }
+    for (var i = 0; i < searchHistory.length; i++) {
+        if (name === searchHistory[i]) {
+            return;
+        }
+    }
+    searchHistory.push(name);
+    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+
+
+
 
 // load user local storage under search input
+function renderHisotry() {
+    var historyArray = JSON.parse(localStorage.getItem("searchHistory"));
+    $("#search-history-container").text("");
+    for (var i=0; i < historyArray.length; i++) {
+        var itemAdded = $('<button>');
+        itemAdded.addClass("history-button");
+        itemAdded.text(historyArray[i]);
+        $("#search-history-container").append(itemAdded);
+    }
+}
 
+renderHisotry();
 
 
 
 // listen event for click of search button
-$("#searchform").on("submit", function(){
+$("#searchform").on("submit", function(event){
     event.preventDefault();
     var cityName = $('#search-field-input').val();
        // ADD in all funcions that need to run
        console.log(cityName);
        userLocation(cityName);
-        
+       storeHistory(cityName);
+       renderHisotry();
+       $("#search-field-input").val("");
+
    
 })
 
 
 
-
 // listen event for click of past search history 
-
-// listen event for click of past search history 
-$("#search-history-container").on("click", "p", function(){
-    var historyCityName = $(this).text();
+$("#search-history-container").on("click", ".history-button", function(){
+    var cityName = $(this).text();
     userLocation(cityName);
     // Run Fetch commands
     breweryData(cityName);
