@@ -21,7 +21,7 @@ var distanceMatrix =[];
 // fetch function for city location based on search input
     // fetch lon/lat based on address using mapquest
 var userLocation = function(cityName){
-    fetch(`http://www.mapquestapi.com/geocoding/v1/address?key=${apiKey}&location=${cityName}`)
+    fetch(`https://www.mapquestapi.com/geocoding/v1/address?key=${apiKey}&location=${cityName}`)
     .then(function(response){
     return response.json();
     })
@@ -85,7 +85,7 @@ var breweryData = function(){
 var getDistance = function(){
     console.log(breweryAddressLatMatrix);
 
-    fetch(`http://www.mapquestapi.com/directions/v2/route?key=${apiKey}&from=${cityLat},${cityLong}&to=${breweryAddressLatMatrix[0]},${breweryAddressLongMatrix[0]}`)
+    fetch(`https://www.mapquestapi.com/directions/v2/route?key=${apiKey}&from=${cityLat},${cityLong}&to=${breweryAddressLatMatrix[0]},${breweryAddressLongMatrix[0]}`)
         .then(function(response){
         return response.json();
         })
@@ -96,7 +96,7 @@ var getDistance = function(){
             breweryDistance.text("Brewery Distance: " + distanceMatrix[0] + " Miles");
         })
 
-    fetch(`http://www.mapquestapi.com/directions/v2/route?key=${apiKey}&from=${cityLat},${cityLong}&to=${breweryAddressLatMatrix[1]},${breweryAddressLongMatrix[1]}`)
+    fetch(`https://www.mapquestapi.com/directions/v2/route?key=${apiKey}&from=${cityLat},${cityLong}&to=${breweryAddressLatMatrix[1]},${breweryAddressLongMatrix[1]}`)
         .then(function(response){
         return response.json();
         })
@@ -107,7 +107,7 @@ var getDistance = function(){
             breweryDistance.text("Brewery Distance: " + distanceMatrix[1] + " Miles");
         })
 
-    fetch(`http://www.mapquestapi.com/directions/v2/route?key=${apiKey}&from=${cityLat},${cityLong}&to=${breweryAddressLatMatrix[2]},${breweryAddressLongMatrix[2]}`)
+    fetch(`https://www.mapquestapi.com/directions/v2/route?key=${apiKey}&from=${cityLat},${cityLong}&to=${breweryAddressLatMatrix[2]},${breweryAddressLongMatrix[2]}`)
     .then(function(response){
     return response.json();
     })
@@ -118,7 +118,7 @@ var getDistance = function(){
         breweryDistance.text("Brewery Distance: " + distanceMatrix[2] + " Miles");
     })
 
-    fetch(`http://www.mapquestapi.com/directions/v2/route?key=${apiKey}&from=${cityLat},${cityLong}&to=${breweryAddressLatMatrix[3]},${breweryAddressLongMatrix[3]}`)
+    fetch(`https://www.mapquestapi.com/directions/v2/route?key=${apiKey}&from=${cityLat},${cityLong}&to=${breweryAddressLatMatrix[3]},${breweryAddressLongMatrix[3]}`)
     .then(function(response){
     return response.json();
     })
@@ -129,7 +129,7 @@ var getDistance = function(){
         breweryDistance.text("Brewery Distance: " + distanceMatrix[3]+ " Miles");
     })
 
-    fetch(`http://www.mapquestapi.com/directions/v2/route?key=${apiKey}&from=${cityLat},${cityLong}&to=${breweryAddressLatMatrix[4]},${breweryAddressLongMatrix[4]}`)
+    fetch(`https://www.mapquestapi.com/directions/v2/route?key=${apiKey}&from=${cityLat},${cityLong}&to=${breweryAddressLatMatrix[4]},${breweryAddressLongMatrix[4]}`)
     .then(function(response){
     return response.json();
     })
