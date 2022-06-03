@@ -63,11 +63,19 @@ var breweryData = function(){
 
 // Save user search history into local storage
 var searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
-if (searchHistory === null) {
-    searchHistory = []
+if (searchHistory == null) {
+    searchHistory = [];
     localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
 }
 function storeHistory (name) {
+    if (name == "") {
+        return;
+    }
+    for (var i = 0; i < searchHistory.length; i++) {
+        if (name === searchHistory[i]) {
+            return;
+        }
+    }
     searchHistory.push(name);
     localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
 }
@@ -83,6 +91,8 @@ function renderHisotry() {
     }
 }
 
+renderHisotry();
+
 
 
 // listen event for click of search button
@@ -93,8 +103,17 @@ $("#searchform").on("submit", function(event){
        console.log(cityName);
        userLocation(cityName);
        storeHistory(cityName);
-       renderHisotry(); 
+       renderHisotry();
+       $("#search-field-input").val("");
+
    
+})
+
+$("#clearBtn").on("click", function(event) {
+    event.preventDefault();
+    $("#search-history-container").text("");
+    searchHistory = [];
+    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
 })
 
 // listen event for click of past search history 

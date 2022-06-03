@@ -1,8 +1,30 @@
 .search-field-container {
-    height: 200px;
+    /*height: 200px;*/
     margin: 10px 0 0 16px;
 }
 
 .results-container {
     margin: 10px 0 0 16px;
+}
+
+.search-history-cointainer {
+    width: 100px;
+}
+
+.history-button {
+    width: 120px;
+    height: 40px;
+    margin: 10px 10px 10px 30px;
+    font-size: 15px;
+    border-radius: 8px;
+    background-color: gold;
+}
+
+.history-button:hover {
+    width: 120px;
+    height: 40px;
+    margin: 10px 10px 10px 30px;
+    font-size: 15px;
+    border-radius: 8px;
+    background-color: orange;
 }
