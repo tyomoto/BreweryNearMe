@@ -30,8 +30,7 @@ var userLocation = function(cityName){
         console.log(cityLat);
         console.log(cityLong);
 
-        // console.log(data);
-        breweryData();
+
 
         console.log(data);
         breweryData(); 
@@ -61,7 +60,6 @@ var breweryData = function(){
             breweryAddressLatMatrix[i] = data[i].latitude;
             
             var breweryName = $("#brewery-name-" + [i+1]);
-            console.log(breweryName);
             breweryName.text("Brewery Name: " + breweryNameMatrix[i]);
 
             var breweryAddress = $("#brewery-address-" + [i+1]);
@@ -113,11 +111,11 @@ function storeHistory (name) {
     searchHistory.push(name);
     localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
 
-
+}
 
 
 // load user local storage under search input
-function renderHisotry() {
+function renderHistory() {
     var historyArray = JSON.parse(localStorage.getItem("searchHistory"));
     $("#search-history-container").text("");
     for (var i=0; i < historyArray.length; i++) {
@@ -128,7 +126,7 @@ function renderHisotry() {
     }
 }
 
-renderHisotry();
+renderHistory();
 
 
 
@@ -140,7 +138,7 @@ $("#searchform").on("submit", function(event){
        console.log(cityName);
        userLocation(cityName);
        storeHistory(cityName);
-       renderHisotry();
+       renderHistory();
        $("#search-field-input").val("");
 
    
@@ -157,6 +155,12 @@ $("#search-history-container").on("click", ".history-button", function(){
     
 })
 
-
+// Listen event to clear search history
+$("#clearBtn").on("click", function(event) {
+    event.preventDefault();
+    $("#search-history-container").text("");
+    searchHistory = [];
+    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+})
 
 
