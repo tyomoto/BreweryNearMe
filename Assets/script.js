@@ -11,7 +11,7 @@ var cityLong;
 
 var searchesStored = [];
 
-
+var breweryNameMatrix = [];
 var breweryAddressMatrix = [];
 var breweryAddressLongMatrix = [];
 var breweryAddressLatMatrix =[];
@@ -52,10 +52,18 @@ var breweryData = function(){
     })
     .then(function(data){
         // console.log(data);
-        for(var i=0; i < 5; i++){
+        for(var i=0; i < data.length; i++){
+            breweryNameMatrix[i] = data[i].name;
             breweryAddressMatrix[i] = data[i].street;
             breweryAddressLongMatrix[i] = data[i].longitude; 
             breweryAddressLatMatrix[i] = data[i].latitude;
+            
+            var breweryName = $("#brewery-name-" + [i+1]);
+            console.log(breweryName);
+            breweryName.text("Brewery Name: " + breweryNameMatrix[i]);
+
+            var breweryAddress = $("#brewery-address-" + [i+1]);
+            breweryAddress.text("Brewery Address: " + breweryAddressMatrix[i])
         }
         console.log(breweryAddressLatMatrix);
         console.log(breweryAddressLongMatrix);
@@ -104,7 +112,6 @@ $("#searchform").on("submit", function(){
 
 
 
-// distance();
 // listen event for click of past search history 
 
 // listen event for click of past search history 
