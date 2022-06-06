@@ -4,8 +4,6 @@ var apiKey = "95hcXeOsnd4dIFUnbepjXbFxyLKnwAAA";
 
 // Global variables
 
-
-
 var cityLat;
 var cityLong;
 
@@ -32,25 +30,22 @@ var userLocation = function(cityName){
         console.log(cityLong);
 
 
-
+// Log to make sure we're getting back correct data
         console.log(data);
         breweryData(); 
 
     })
 }
 
-// fetch breweries by distance // GET https://api.openbrewerydb.org/breweries?by_dist=LON/LAT5&per_page=5
-    //  brewery name, (use openbreweryapi)
-    // street/address, (use openbreweryapi)
 var breweryData = function(){
 
-    // console.log(cityLong);
-    // console.log(cityLat);
 
+// fetch function to gather data from openbrewery api
     fetch("https://api.openbrewerydb.org/breweries?by_dist=" + cityLat + "," + cityLong + "&per_page=5")
     .then(function(response){
         return response.json();
     })
+    // For Loop function gather data on each brewery to then populate data for each brewery into the results container
     .then(function(data){
         console.log(data);
         for(var i=0; i < data.length; i++){
@@ -71,17 +66,18 @@ var breweryData = function(){
             websiteURL.attr("href", breweryWebsiteMatrix[i]);
 
         }
+        // Logs to make sure we're getting back all the data
         console.log(data);
         console.log(breweryWebsiteMatrix);
-        // console.log(breweryAddressLatMatrix);
-        // console.log(breweryAddressLongMatrix);
-        // console.log(breweryAddressMatrix);
+        console.log(breweryAddressLatMatrix);
+        console.log(breweryAddressLongMatrix);
+        console.log(breweryAddressMatrix);
         getDistance();
         
     })
 }
 
-    // distance, (use mapquestapi based on openbrewery long/lat)
+    // Function to get distance from user location to each brewery, (use mapquestapi based on openbrewery long/lat).
 var getDistance = function(){
     console.log(breweryAddressLatMatrix);
 
@@ -145,10 +141,9 @@ var getDistance = function(){
     
 }
 
-    //  websiteurl, (use openbreweryapi)
        
 
-// Save user search history into local storage
+// Save user search history into local storage and get the local stored history
 
 var searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
 if (searchHistory == null) {
