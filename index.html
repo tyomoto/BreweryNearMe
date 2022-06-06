@@ -8,17 +8,16 @@
     <!-- Link to bulma css-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="./Assets/style.css">
-     <!-- rename title -->
     <title>BreweryNearMe</title>
 </head>
 <body>
     <header class="hero is-small is-dark">
         <div class="hero-body has-text-centered">
           <p class="title">
-           Brewery Near Me
+           Brewery Near Me <img class="beer-icon" src="./Assets/Images/Beer Icon.png" alt="">
           </p>
           <p class="subtitle">
-            Find your nearest Brewery and directions to get there!
+            Find your nearest Brewery and distance get there!
           </p>
         </div>
     </header>
@@ -40,7 +39,7 @@
             </div>
             <div class="column box results-container">
                 <p class="title has-text-left results-title" id="results-title">Results:</p>
-                <p class="subtitle has-text-left results-info" id="results-info">Results are sorted by nearest brewery to your location</p>
+                <p class="subtitle has-text-left results-info" id="results-info">5 nearest brewery to your location</p>
                 <div class="content">
                     <div class="container notification is-light results-container" id="results-container">
                         <div class="notification is-dark results-container-1" id="results-container-1">
@@ -101,7 +100,7 @@
         
     </main>
    
-
+<!-- link to our js and jquery script -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="./Assets/script.js"></script>
 </body>
